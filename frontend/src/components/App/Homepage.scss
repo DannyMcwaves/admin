@@ -1,0 +1,32 @@
+@import "../../fonts/Atomic_Age/AtomicAge-Regular.css";
+
+#content{
+  background-color: transparentize(#FFF, 0.7);
+}
+#logo{
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+}
+#name{
+  text-align: center;
+  font-family: AtomicAge-Regular, Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+#usernameOrEmail, #password{
+  background-color: transparent;
+}
+button.btn{
+  font-family: AtomicAge-Regular, Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+input:focus{
+  border-color: #4b5257!important;
+  color: #4b5257!important;
+}
+div.social{
+  letter-spacing: 0.6em;
+  font-size: 1.5em;
+  color: #4b5257;
+}
+.text-twitter{
+  color: #3a91ff;
+}
