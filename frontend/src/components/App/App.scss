@@ -1,0 +1,24 @@
+@import "compass";
+.App {
+  @include background(linear-gradient(120deg, transparentize(#c0c0c0, 0.7), transparentize(grey, 0.4), #dddddd));
+  // @include background-image(radial-gradient(45px 45px, cyan 10px, dodgerblue 30px));
+  //@include background-image(radial_gradient(45px 45px, cyan 10px, #ccc 30px));
+  //vertical-align: middle!important;
+}
+.App-header{
+  //vertical-align: baseline!important;
+}
+.App-logo {
+  //animation: App-logo-spin infinite 1s linear;
+  height: 50px;
+  margin: 10px;
+  display: inline;
+  vertical-align: middle;
+}
+li{
+  list-style: none;
+}
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
