@@ -3,6 +3,7 @@ import {WindowRow, Col, GridFluid, AutoCol, Row} from '../lib/index';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Signin from './signin';
 import Signup from './signup';
+import Signout from './signout';
 import Users from '../user/user';
 import './Homepage.scss';
 import logo from '../../images/theater.png';
@@ -25,6 +26,7 @@ class Homepage extends Component {
                       <Route exact path='/' component={Signin}/>
                       <Route path='/signup' component={Signup}/>
                       <Route path='/users' component={Users}/>
+                      <Route path='/signout' component={Signout}/>
                     </GridFluid>
                   </Row>
                 </GridFluid>

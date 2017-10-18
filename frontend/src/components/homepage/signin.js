@@ -12,6 +12,7 @@ export default class Signin extends Component {
     // explicitly bind all methods to this object.
     this.submitForm = this.submitForm.bind(this);
     this.passwordChange = this.passwordChange.bind(this);
+    this.socialClick = this.socialClick.bind(this);
   }
 
   render() {
@@ -46,10 +47,11 @@ export default class Signin extends Component {
   }
 
   componentDidMount() {
-    window.$('#main').toggleClass('align-items-center');
+    window.$('#main').addClass('align-items-center');
   }
 
   passwordChange(e) {
+    let _this = this;
     let value = e.target.value,
       name = e.target.name,
       regex = name === 'usernameOrEmail' ? /[a-zA-Z0-9.]+@[a-zA-Z]+.com?/ : /[a-zA-Z0-9]+/;
@@ -70,7 +72,7 @@ export default class Signin extends Component {
       pass = this.passwordChange({target: _this.password}),
       email = this.passwordChange({target: _this.email});
     if (pass && email) {
-      console.log(data);
+      window.$('#signin')[0].reset();
       postDataToServer(this.url, data).done(data => {
         _this.props.history.push('/users');
         console.log(data);
@@ -79,4 +81,15 @@ export default class Signin extends Component {
       })
     }
   }
+
+  socialClick(e) {
+    e.preventDefault();
+    let href = e.target.href || window.$(e.target).parent().attr('href');
+    window.$.get(href).done(data =>{
+      console.log(data);
+    }).fail(err => {
+      console.log(err);
+    })
+  }
+
 }
