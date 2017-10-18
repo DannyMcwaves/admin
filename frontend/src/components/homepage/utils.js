@@ -3,8 +3,7 @@
  */
 
 const postDataToServer = (url, data) => {
-    return window.$.ajax({
-      method: 'POST',
+    return window.$.post({
       url: url,
       data: data,
       dataType: 'json'
