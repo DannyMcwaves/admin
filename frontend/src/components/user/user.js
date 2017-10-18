@@ -15,5 +15,6 @@ export default class Users extends Component{
 
   componentDidMount() {
     window.$('#main').removeClass('align-items-center');
+    console.log(window.sessionStorage);
   }
 }
