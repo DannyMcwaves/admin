@@ -20,12 +20,12 @@ export default class Signin extends Component {
         <AutoCol>
           <form className='form' id='signin'>
             <div className='form-group pb-1 pt-4'>
-              <input type='text' onChange={this.passwordChange} onBlur={this.passwordChange} id='usernameOrEmail' name='usernameOrEmail' className='form-control form-control-sm' placeholder='username or email'/>
-              <small className='text-danger hide'>user/email required</small>
+              <input type='text' ref={(email) => {this.email = email}} onChange={this.passwordChange} onBlur={this.passwordChange} id='usernameOrEmail' name='usernameOrEmail' className='form-control form-control-sm' placeholder='username or email'/>
+              <small className='text-danger hide'>valid username/email required</small>
             </div>
             <div className='form-group pt-1 pb-3'>
-              <input onChange={this.passwordChange} onBlur={this.passwordChange} id='password' name='password' type='password' className='form-control form-control-sm' placeholder='password'/>
-              <small className='text-danger hide'>password required</small>
+              <input onChange={this.passwordChange} ref={(password) => {this.password = password}} onBlur={this.passwordChange} id='password' name='password' type='password' className='form-control form-control-sm' placeholder='password'/>
+              <small className='text-danger hide'>password required <b>[must be more than 10 digits and contain numbers.]</b></small>
             </div>
             <Row className='form-group'>
               <Col xs={3} sm={4}>
@@ -45,21 +45,38 @@ export default class Signin extends Component {
     )
   }
 
+  componentDidMount() {
+    window.$('#main').toggleClass('align-items-center');
+  }
+
   passwordChange(e) {
     let value = e.target.value,
-      name = e.target.name;
-    console.log(name);
-    if (!value) {
+      name = e.target.name,
+      regex = name === 'usernameOrEmail' ? /[a-zA-Z0-9.]+@[a-zA-Z]+.com?/ : /[a-zA-Z0-9]+/;
+
+    if (!value || !regex.test(value) || (name === 'password' && value.length < 10)) {
       window.$(e.target).next().fadeIn();
+      return false
     } else {
       window.$(e.target).next().hide();
+      return true
     }
   }
 
   submitForm(e) {
     e.preventDefault();
     let data = window.$('#signin').serializeArray(),
-      _this = this;
-    console.log(data);
+      _this = this,
+      pass = this.passwordChange({target: _this.password}),
+      email = this.passwordChange({target: _this.email});
+    if (pass && email) {
+      console.log(data);
+      postDataToServer(this.url, data).done(data => {
+        _this.props.history.push('/users');
+        console.log(data);
+      }).fail(err => {
+        console.log(err);
+      })
+    }
   }
 }
