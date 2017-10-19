@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom';
+import {dispatchSignout} from "../../js/actionCreators";
+import {connect} from 'react-redux';
 
-export default class Signout extends Component{
+class Signout extends Component{
   constructor(props) {
     super();
     this.props = props;
+    this.url = '/api/auth/signout'
   }
+
   render() {
-    return (
-      <Redirect to={{ pathname: '/', state: { from: this.props.location } }}/>
-    )
+    return null
+  }
+
+  componentDidMount(){
+    console.log('mounted signout');
+    console.log(this.props);
+    this.props.dispatch(dispatchSignout(window.$, this.url, this.props.history));
+    this.props.history.push('/');
   }
 }
+
+export default connect()(Signout)

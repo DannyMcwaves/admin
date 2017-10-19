@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import {Col, AutoCol, Row, ClearFix} from '../lib/index';
 import {Link} from 'react-router-dom';
-import {postDataToServer} from "./utils";
+import {connect} from 'react-redux';
+import {getDataAndDispatch} from "../../js/actionCreators";
 
-export default class Signin extends Component {
+class Signin extends Component {
   constructor(props) {
     super();
     this.props = props;
@@ -48,10 +49,10 @@ export default class Signin extends Component {
 
   componentDidMount() {
     window.$('#main').addClass('align-items-center');
+    console.log(this.props);
   }
 
   passwordChange(e) {
-    let _this = this;
     let value = e.target.value,
       name = e.target.name,
       regex = name === 'usernameOrEmail' ? /[a-zA-Z0-9.]+@[a-zA-Z]+.com?/ : /[a-zA-Z0-9]+/;
@@ -72,13 +73,7 @@ export default class Signin extends Component {
       pass = this.passwordChange({target: _this.password}),
       email = this.passwordChange({target: _this.email});
     if (pass && email) {
-      window.$('#signin')[0].reset();
-      postDataToServer(this.url, data).done(data => {
-        _this.props.history.push('/users');
-        console.log(data);
-      }).fail(err => {
-        console.log(err);
-      })
+      _this.props.dispatch(getDataAndDispatch(window.$, _this.url, data, _this.props.history));
     }
   }
 
@@ -93,3 +88,5 @@ export default class Signin extends Component {
   }
 
 }
+
+export default connect()(Signin);

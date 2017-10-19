@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {Col, AutoCol, Row, ClearFix} from '../lib/index';
 import {Link} from 'react-router-dom';
-import {postDataToServer} from "./utils";
+import {connect} from 'react-redux';
+import {getDataAndDispatch} from "../../js/actionCreators";
 
-
-export default class Signup extends Component {
+class Signup extends Component {
   constructor(props) {
     super();
     this.props = props;
@@ -76,19 +76,12 @@ export default class Signup extends Component {
       password = this.passwordChange({target: window.$('#signup #password')[0]}),
       vpassword = this.passwordChange({target: window.$('#signup #confirmPassword')[0]});
     if (firstname && lastname && username && email && password && vpassword) {
-      window.$('#signup')[0].reset();
-      postDataToServer(_this.url, data).done(data => {
-        console.log(data);
-        _this.props.history.push('/users')
-      }).fail(err => {
-        console.log(err);
-      });
+      _this.props.dispatch(getDataAndDispatch(window.$, _this.url, data, _this.props.history));
     }
 
   }
 
   nameChange(e) {
-    let _this = this;
     let value = e.target.value;
     if (!value) {
       window.$(e.target).next().fadeIn();
@@ -100,7 +93,6 @@ export default class Signup extends Component {
   }
 
   emailChange(e) {
-    let _this = this;
     let value = e.target.value,
       regex = /[a-zA-Z0-9.]+@[a-zA-Z]+.com?/;
 
@@ -114,7 +106,6 @@ export default class Signup extends Component {
   }
 
   passwordChange(e) {
-    let _this = this;
     let value = e.target.value,
       regex = /[a-zA-Z0-9]+/;
 
@@ -128,7 +119,6 @@ export default class Signup extends Component {
   }
 
   verifyPasswordChange(e) {
-    let _this = this;
     let value = e.target.value,
       pvalue = window.$('#signup #password').val();
 
@@ -146,3 +136,5 @@ export default class Signup extends Component {
   }
 
 }
+
+export default connect()(Signup);
