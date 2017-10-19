@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import {WindowRow, Col, GridFluid, AutoCol, Row} from '../lib/index';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Signin from './signin';
 import Signup from './signup';
 import Signout from './signout';
 import Users from '../user/user';
+import FourOhFour from '../404/404';
 import './Homepage.scss';
 import logo from '../../images/theater.png';
 
@@ -23,10 +24,13 @@ class Homepage extends Component {
                       </Row>
                     </GridFluid>
                     <GridFluid>
-                      <Route exact path='/' component={Signin}/>
-                      <Route path='/signup' component={Signup}/>
-                      <Route path='/users' component={Users}/>
-                      <Route path='/signout' component={Signout}/>
+                      <Switch>
+                        <Route exact path='/' component={Signin}/>
+                        <Route path='/signup' component={Signup}/>
+                        <Route path='/users' component={Users}/>
+                        <Route path='/signout' component={Signout}/>
+                        <Route component={FourOhFour}/>
+                      </Switch>
                     </GridFluid>
                   </Row>
                 </GridFluid>
