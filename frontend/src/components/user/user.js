@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Row} from '../lib/index';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {BrowserRouter as Router, Link} from 'react-router-dom';
 
 export default class Users extends Component{
   render() {
@@ -8,6 +8,7 @@ export default class Users extends Component{
       <Router>
         <Row className='animated slideInLeft'>
           <div>this is the use page btw</div>
+          <Link to='signout'>signout</Link>
         </Row>
       </Router>
     )
