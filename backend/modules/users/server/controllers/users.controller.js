@@ -42,7 +42,7 @@ exports.signup = function (req, res) {
         if (err) {
           res.status(400).send(err);
         } else {
-          res.json(user);
+          res.status(200).json(user);
         }
       });
     }
@@ -65,7 +65,7 @@ exports.signin = function (req, res, next) {
         if (err) {
           res.status(400).send(err);
         } else {
-          res.json(user);
+          res.status(200).json(user);
         }
       });
     }
@@ -77,7 +77,8 @@ exports.signin = function (req, res, next) {
  */
 exports.signout = function (req, res) {
   req.logout();
-  res.redirect('/');
+  res.status(200).json({ path: '/', status: 'LOGOUT' });
+  // res.redirect('/signin');
 };
 
 /**
@@ -94,22 +95,22 @@ exports.oauthCall = function (req, res, next) {
  */
 exports.oauthCallback = function (req, res, next) {
   let strategy = req.params.strategy;
-
   // info.redirect_to contains intended redirect path
   passport.authenticate(strategy, function (err, user, info) {
     if (err) {
-      return res.redirect('/authentication/signin?err=' + encodeURIComponent(errorHandler.getErrorMessage(err)));
+      return res.redirect('/?err=' + encodeURIComponent(errorHandler.getErrorMessage(err)));
     }
     if (!user) {
-      return res.redirect('/authentication/signin');
+      return res.redirect('/');
     }
-    console.log(user);
     req.login(user, function (err) {
       if (err) {
-        return res.redirect('/authentication/signin');
+        console.log(err);
+        return res.redirect('/');
       }
       console.log(user);
-      return res.redirect(info.redirect_to || '/');
+      res.locals.user = user;
+      return res.redirect('/users');
     });
   })(req, res, next);
 };
