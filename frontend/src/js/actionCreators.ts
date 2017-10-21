@@ -9,9 +9,9 @@ const getDataAndDispatch = ($, url, data, history) => (dispatch) => {
     dispatch(Loading);
     return $.post({ url: url, data: data, dataType: 'json' }).done((data) => {
         dispatch({type: USER, data: data});
-        history.push('/users');
+        history.push('/user/');
     }).fail(err => {
-        console.log(err.responseJSON);
+        console.log(err);
     }).always(_ => {
         dispatch(NotLoading);
     });
@@ -19,11 +19,11 @@ const getDataAndDispatch = ($, url, data, history) => (dispatch) => {
 
 const dispatchSignout = ($, url, history) => (dispatch) => {
     dispatch(Loading);
-    $.get(url).done(data => {
+    return $.get(url).done(data => {
         dispatch({type: USER, data: {}});
         history.push(data.path);
     }).fail(err => {
-        console.log(err.responseJSON);
+        console.log(err);
     })
 };
 
