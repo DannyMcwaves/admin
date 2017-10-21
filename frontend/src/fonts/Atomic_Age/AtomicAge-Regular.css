@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "AtomicAge-Regular";
+    src: url("AtomicAge-Regular.eot"); /* IE9 */
+    src: url("AtomicAge-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("AtomicAge-Regular.woff") format("woff"), /* chrome, firefox */
+    url("AtomicAge-Regular.ttf") format("truetype"), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+    url("AtomicAge-Regular.svg#AtomicAge-Regular") format("svg"); /* iOS 4.1- */
+    font-style: normal;
+    font-weight: normal;
+}
+
+
