@@ -8,7 +8,7 @@ class Signin extends Component {
   constructor(props) {
     super();
     this.props = props;
-    this.url = '/api/auth/signin';
+    this.url = 'https://localhost:8443/api/auth/signin';
 
     // explicitly bind all methods to this object.
     this.submitForm = this.submitForm.bind(this);
@@ -49,7 +49,6 @@ class Signin extends Component {
 
   componentDidMount() {
     window.$('#main').addClass('align-items-center');
-    console.log(this.props);
   }
 
   passwordChange(e) {
