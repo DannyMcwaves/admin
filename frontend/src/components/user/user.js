@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import {Row} from '../lib/index';
-import {BrowserRouter as Router, Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
+import {connect} from 'react-redux';
+import Me from './me';
+import Data from './data';
+import './user.scss';
 
-export default class Users extends Component{
+class Users extends Component{
   render() {
     return (
-      <Router>
         <Row className='animated slideInLeft'>
-          <div>this is the use page btw</div>
-          <Link to='signout'>signout</Link>
+          <Route exact path='/user/' component={Me}/>
+          <Route exact path='/user/data' component={Data}/>
         </Row>
-      </Router>
     )
   }
 
   componentDidMount() {
     window.$('#main').removeClass('align-items-center');
-    console.log(window.sessionStorage);
   }
 }
+
+export default connect()(Users);
