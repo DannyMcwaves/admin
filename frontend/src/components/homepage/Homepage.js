@@ -27,7 +27,7 @@ class Homepage extends Component {
                       <Switch>
                         <Route exact path='/' component={Signin}/>
                         <Route path='/signup' component={Signup}/>
-                        <Route path='/users' component={Users}/>
+                        <Route path='/user' component={Users}/>
                         <Route path='/signout' component={Signout}/>
                         <Route component={FourOhFour}/>
                       </Switch>
