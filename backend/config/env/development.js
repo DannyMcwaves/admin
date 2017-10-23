@@ -30,14 +30,14 @@ module.exports = {
     callbackURL: '/api/auth/facebook/callback'
   },
   twitter: {
-    username: '@TWITTER_USERNAME',
-    clientID: process.env.TWITTER_KEY || 'CONSUMER_KEY',
-    clientSecret: process.env.TWITTER_SECRET || 'CONSUMER_SECRET',
+    username: '@dannymcwaves',
+    clientID: process.env.TWITTER_KEY || 'wds8SD62htdKOECkcbAp7BeaK',
+    clientSecret: process.env.TWITTER_SECRET || 'p8Br8giCch8Ex3rFUvGxeZgQE3JjNXfdFTx6zDlbeVrj9PioU4',
     callbackURL: '/api/auth/twitter/callback'
   },
   google: {
-    clientID: process.env.GOOGLE_ID || 'APP_ID',
-    clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
+    clientID: process.env.GOOGLE_ID || '774413843914-7h4dq41uup83i2ipjv2ttib8h17tj8j7.apps.googleusercontent.com',
+    clientSecret: process.env.GOOGLE_SECRET || 'UWAEuu89HQnTVSQRmd3hfIpS',
     callbackURL: '/api/auth/google/callback'
   },
   linkedin: {
