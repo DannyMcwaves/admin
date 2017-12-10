@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {WindowRow, WindowGridFluid} from '../lib/index';
+import {WindowRow, WindowGrid, AutoCol, WindowGridFluid, Col} from '../lib/index';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
@@ -7,14 +7,25 @@ class Me extends Component{
   constructor(props) {
     super();
     this.props = props;
+    this.user = this.props.user;
   }
 
   render() {
     return (
-      <WindowGridFluid>
+      <WindowGridFluid id='mypage'>
         <WindowRow className='animated slideInLeft'>
-          <div id='user'>{this.props.user.username} - {this.props.user.displayName}</div>
-          <li style={{display: 'block'}}><Link to='/user/data'>data</Link></li>
+          <AutoCol>
+            <WindowGrid>
+              <WindowRow className='align-items-center' id='mydata'>
+                <Col xs={12} sm={4}>
+                  <img src={'https://0.0.0.0:8443'+this.user.profileImageURL} />
+                </Col>
+                <Col xs={12} sm={8}>
+                  
+                </Col>
+              </WindowRow>
+            </WindowGrid>
+          </AutoCol>
         </WindowRow>
       </WindowGridFluid>
     )
