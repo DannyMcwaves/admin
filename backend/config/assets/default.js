@@ -44,10 +44,10 @@ module.exports = {
       'modules/*/client/**/*.js'
     ],
     img: [
-      'modules/**/*/img/**/*.jpg',
-      'modules/**/*/img/**/*.png',
-      'modules/**/*/img/**/*.gif',
-      'modules/**/*/img/**/*.svg'
+      'modules/**/*/uploads/**/*.jpg',
+      'modules/**/*/uploads/**/*.png',
+      'modules/**/*/uploads/**/*.gif',
+      'modules/**/*/uploads/**/*.svg'
     ],
     views: ['modules/*/client/views/**/*.html'],
     templates: ['build/templates.js']
