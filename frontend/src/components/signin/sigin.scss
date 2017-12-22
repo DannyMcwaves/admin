@@ -1,0 +1,56 @@
+@import "../../fonts/Atomic_Age/AtomicAge-Regular.css";
+
+
+#content{
+  background-color: transparentize(#FFF, 0.98);
+  box-shadow: -3px 3px 4px transparentize(#4b5257, 0.93);
+}
+
+#usernameOrEmail, #password, #signup input{
+  background-color: transparent;
+}
+
+button.btn{
+  font-family: AtomicAge-Regular, Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+input:focus{
+  border-color: #4b5257!important;
+  color: #4b5257!important;
+}
+
+div.social{
+  letter-spacing: 0.6em;
+  font-size: 1.5em;
+  color: #4b5257;
+}
+
+.text-twitter{
+  color: transparentize(#3a91ff, 0.6);
+}
+
+.hide{
+  display: none;
+}
+
+input.error {
+  border-left: 4px solid darkred;
+}
+
+input.no-error{
+  border-bottom: 4px solid green;
+}
+
+input.error:focus {
+  border: 1px solid darkred!important;
+  outline: 1px solid darkred!important;
+  border-left: 4px solid darkred!important;
+}
+
+.transparent{
+  background-color: transparent!important;
+}
+
+div.signin{
+  background-color: #0c5460;
+}
